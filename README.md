@@ -148,24 +148,38 @@ npx playwright show-report playwright-report
 
 ---
 
-## CI/CD Integration (GitHub Actions Example)
+## CI/CD Integration
 
-```yaml
-name: Playwright Tests
-on: [push, pull_request]
-jobs:
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 18
-      - run: npm ci
-      - run: npx playwright install
-      - run: npx playwright test --grep @ui
-      - run: npx playwright show-report test-results/playwright-report
-```
+The workflow runs Playwright Page Object Model (POM) UI tests using GitHub Actions.
+
+### Trigger
+
+Manually via **Workflow Dispatch**.
+
+### Inputs
+
+* **headless**: Run tests in headless mode (`true` / `false`, default `false`).
+
+### How It Works
+
+* Runs tests in parallel for each folder in the matrix (`dummyFolder 1`, `dummyFolder 2`).
+* Steps:
+
+  1. Checkout repo
+  2. Setup Node.js 20.x
+  3. Install Playwright dependencies & browser
+  4. Install project dependencies
+  5. Run POM tests (`HEADLESS` mode applied)
+  6. Rename HTML report per folder
+  7. Upload report as artifact
+
+### Access Reports
+
+Download HTML reports from **Artifacts**: `playwright-report-<folder>.html`.
+
+### Example
+
+Run workflow → select **headless** → workflow runs tests per folder in parallel.
 
 ---
 

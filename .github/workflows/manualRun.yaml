@@ -1,0 +1,61 @@
+name: Run All POM Tests
+
+on:
+  workflow_dispatch:
+    inputs:
+      headless:
+        description: "Run tests in headless mode"
+        required: true
+        default: "false"
+        type: choice
+        options:
+          - "false"
+          - "true"
+
+jobs:
+  Run_Tests:
+    strategy:
+      fail-fast: false
+      max-parallel: 4
+      matrix:
+        ui-tests:
+          [
+            dummyFolder 1,
+            dummyFolder 2,
+          ]
+
+    runs-on: ubuntu-latest
+    env:
+      HEADLESS: ${{ github.event.inputs.headless }}
+      DEBUG: "false"
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20.x
+
+      - name: Setup playwright
+        run: npx playwright install-deps
+
+      - name: Install dependencies
+        uses: bahmutov/npm-install@v1
+
+      - name: Setup playwright browser
+        run: npx playwright install chromium
+
+      - name: Run POM Tests
+        run: HEADLESS=${{ github.event.inputs.headless }} npx playwright test tests/ui/${{ matrix.ui-tests }} --workers=5
+
+      - name: Rename index.html
+        if: always()
+        run: |
+          mv playwright-report/index.html playwright-report/$(basename ${{ matrix.ui-tests }}).html
+
+      - name: Upload Renamed HTML Report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report-${{ matrix.ui-tests }}
+          path: pageObjectModel/playwright-report/*.html
