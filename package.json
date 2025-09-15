@@ -1,0 +1,26 @@
+{
+  "name": "firsttrip-playwright",
+  "version": "1.0.0",
+  "description": "Playwright + TypeScript automation framework for FirstTrip application",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx playwright test",
+    "test:headed": "HEADLESS=false npx playwright test",
+    "test:ui": "npx playwright test tests/ui",
+    "test:ui:s": "npx playwright test tests/ui --grep",
+    "test:api": "npx playwright test tests/api",
+    "report:open": "npx playwright show-report"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.55.0",
+    "typescript": "^5.9.2",
+    "ts-node": "^10.9.2",
+    "axios": "^1.12.1"
+  },
+  "dependencies": {
+    "dotenv": "^17.2.2"
+  }
+}

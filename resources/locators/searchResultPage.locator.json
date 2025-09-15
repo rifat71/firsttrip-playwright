@@ -1,0 +1,6 @@
+{
+  "filterAirline": "//div[@data-testid='airline-filter-list']/div/*/p[text()='{name}']",
+  "flightResultCount": "//div[@data-testid='view-flights-result-count']/p",
+  "flightCardPriceSection": "//div[@data-testid='flight_card_{index}']/*/*[@data-testid='price-section']/div[1]/div[2]/div[1]/div[1]/p",
+  "dynamicFlightSelect": "//div[@data-testid='flight_card_{index}']/*/*[@data-testid='price-section']/div[1]/div[2]/div[2]/button[@data-testid='select-button']/p[text()='Select']"
+}

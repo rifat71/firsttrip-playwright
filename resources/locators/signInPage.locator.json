@@ -1,0 +1,4 @@
+{
+  "title": "//h3[text()='Sign In']",
+  "emailInput": "//input[@data-testid='auth_email-input']"
+}

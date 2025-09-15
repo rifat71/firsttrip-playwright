@@ -1,0 +1,12 @@
+{
+  "oneWayRadioButton": "//div[@data-testid='One Way-input']",
+  "from": "(//input[@placeholder='Airport/City'])[1]",
+  "to": "(//input[@placeholder='Airport/City'])[2]",
+  "departureButton": "//button[@data-testid='departure-date-input-form-1']",
+  "datePicker4thWeek": "(//div[@class='react-datepicker__month-container'])[1]/div[2]/div[4]/div[text()='{index}']",
+  "selectTravellers": "//div[@data-testid='select-traveller-input']",
+  "increaseAdultButton": "//p[@data-testid='adult-number-add-button']",
+  "numberOfAdultsText": "//p[@data-testid='adult-number-add-button']/preceding-sibling::p[1]",
+  "economyOrPremiumEconomy": "//div[@data-testid='Economy/Premium Economy-class']",
+  "searchFlightButton": "//button[@data-testid='search-flight-button']"
+}
