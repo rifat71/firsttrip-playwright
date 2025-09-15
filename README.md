@@ -208,5 +208,5 @@ Run workflow → select **headless** → workflow runs tests per folder in paral
 
 * Add more UI test scenarios.
 * Integrate API tests under `tests/api/`.
-* Add CI/CD pipelines.
+* Add CI/CD pipelines update based on the requirements of the project
 * Complete the sign-in modal functionality
